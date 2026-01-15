@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "OLX Lead Extractor AI",
+  "version": "2.0.0",
+  "description": "Auto-extract OLX customer leads to Google Sheets with Llama AI",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": [
+    "https://*.olx.in/*",
+    "https://api.groq.com/*",
+    "https://script.google.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [{
+    "matches": ["https://*.olx.in/*"],
+    "js": ["content.js"],
+    "run_at": "document_idle"
+  }],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}
